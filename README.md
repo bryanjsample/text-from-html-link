@@ -11,8 +11,8 @@
     2. os
     3. bs4
 
-2. **Import Python files into a folder**
-- **Store the folder in a safe location**
+2. **Import Python files into a folder.**
+- **Store the folder in a safe location.**
 - **This is the folder you are always working with.**
 
 #### At this point, you have completed general setup.
@@ -23,12 +23,9 @@
 
 ## Initialize and Run Script
 
->#### Important Notes
->##### Three hashes ( ### ) = Notation that is important to user
->##### One hash ( # ) = Notation about underling script (unimportant to user)
->##### If the profile does not have any phone number associated it will not have any links
+>##### NOTE: If the profile does not have any phone number associated it will not have any links.
 
-### 1. Ensure that folder exists containing the following files
+### 1. Ensure that folder exists containing the following files:
 
 - `createHtml.py`
 - `initialize.py`
@@ -41,7 +38,7 @@
 2. **Second Column : First Name**
 3. **Third Column : Phone Number (no formatting)**
 4. **Fourth Column: Mobile Number (no formatting)**
-> Any subsequent columns will not affect the outcome
+> Any subsequent columns will not affect the outcome.
 > **!! Ensure that the first four columns are correct !!**
 
 ### 3. Export spreadsheet as CSV file
@@ -49,10 +46,30 @@
 
 ### 4. Run `mainScript.py`
 
+1. You will be prompted to enter your message.
+2. Enter your message, hitting enter each time you want to insert a line break.
+    - To represent a first name, type `FIRSTNAME`
+    - To represent a last name, type `LASTNAME`
+3. After hitting enter, you will be asked if the message segment looks correct.
+   1. If no, you will re-write that line.
+   2. If yes, continue.
+4. You will be asked if you are finished with your message.
+   1. If no, you will continue writing the next line of your message.
+   2. If yes, continue.
+5. You will be asked once again if your message looks correct.
+   1. If no, repeat steps 1-4.
+   2. If yes, program will proceed.
+   
+>The program will check to see if **FIRSTNAME** or **LASTNAME** is present in your message.
+>If one or both is missing, you will be prompted to ensure that it was intentional.
+>- If no, repeat steps 1-5.
+>- If yes, program will proceed.
+
 ### 5. Obtain HTML file
 - Navigate to your source folder inside of your file explorer
 - A new folder named `year-month-day_X` will be present
   - `X` = number of folder being made (will automatically increase)
+- Inside of new folder, you will find your CSV file, and also **an HTML file named *`text_list.html`***
 
 ### 6. Email / transfer HTML file
 - You can email the html file to yourself in order to access on your phone
@@ -60,11 +77,11 @@
 
 ### 7. Open files app on your phone
 1. Navigate to `On This iPhone`
-2. Select `texting_list.html`
+2. Select `text_list.html`
     - HTML viewer should open, allowing you to click links and select boxes
 #### OR to use searchbar
 1. Navigate to `On This iPhone`
-2. Long press `texting_list.html`
+2. Long press `text_list.html`
    1. Open in Microsoft Edge
 ### 8. Send text messages
 - Each link inside of the HTML file will automatically:
