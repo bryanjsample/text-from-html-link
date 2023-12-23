@@ -60,6 +60,7 @@ def createTemplate(src):
         quit
 
 def makeLinks(src, csvFile):
+    message = initialize.prompt_for_message()
     #open csv
     with open(f'{src}/{csvFile}') as data:
         #extract csv data
@@ -76,8 +77,6 @@ def makeLinks(src, csvFile):
                 #establish variables
                 #if both numbers are empty skip this iteration
                 if len(column[2]) == 0 and len(column[3]) == 0:
-                    last = column[0]
-                    first = column[1]
                     print(f'There are no phone numbers for {first} {last}')
                     continue
                 #if mobile number is empty use phone number
@@ -85,20 +84,19 @@ def makeLinks(src, csvFile):
                     last = column[0]
                     first = column[1]
                     phone = column[2]
-                    formHTML(src, row, soup, first, last, phone)
+                    formHTML(src, message, row, soup, first, last, phone)
                 #if both numbers are filled in default to mobile number
                 else: 
                     last = column[0]
                     first = column[1]
                     phone = column[3]
-                    formHTML(src, row, soup, first, last, phone)
+                    formHTML(src, message, row, soup, first, last, phone)
                 
 #make and append HTML elements
-def formHTML(src, row, soup, first, last, phone):
+def formHTML(src, message, row, soup, first, last, phone):
     excelRow = row + 1
-    message = initialize.prompt_for_message()
     #format text message for link
-    textMessage = message.replace(' ', '%20')
+    textMessage = format_message(message, first, last)
     #creat new lime break item
     lnBrk = soup.new_tag('br')
     #create new list item
@@ -121,3 +119,12 @@ def formHTML(src, row, soup, first, last, phone):
     #save new html contents
     with open(f'{src}/text_list.html', 'w') as file:
         file.write(newSoup)
+
+def format_message(message, first, last):
+    if 'FIRSTNAME' in message:
+        message = message.replace('FIRSTNAME', f'{first}')
+    if 'LASTNAME' in message:
+        message = message.replace('LASTNAME', f'{last}')
+    if ' ' in message:
+        message = message.replace(' ', '%20')
+    return message

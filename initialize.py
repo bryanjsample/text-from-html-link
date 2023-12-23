@@ -33,8 +33,8 @@ def prompt_for_message():
     answers = ['yes', 'y', 'no', 'n']
 
     while final_confirmation == 'no' or final_confirmation == 'n':
-        message = f''
-        test_message = f''
+        message = ''
+        test_message = ''
         finished = 'no'
         while finished == 'no' or finished == 'n':
             message_text = input(f'Type contents of your message, hit enter for a new line in the message. To represent names, type FIRSTNAME and/or LASTNAME. \n\n{test_message}')
@@ -74,16 +74,9 @@ def prompt_for_message():
                 last_name_confirmation = input('No last name registered, did you mean to include a last name in your message? (yes or no): ')
             if last_name_confirmation == 'yes' or last_name_confirmation == 'y':
                 print('\nSomething went wrong. Retry and make sure you include LASTNAME in message!\n')
-                final_confirmation = 'no'
+                final_confirmation = 'yes'
                 time.sleep(2)
 
-    if 'FIRSTNAME' in message:
-        message = message.replace('FIRSTNAME', '{first}')
-    if 'LASTNAME' in message:
-        message = message.replace('LASTNAME', '{last}')
-    print(message)
-    return message
 
-        
-    
+    return message
     
